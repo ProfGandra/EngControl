@@ -1,0 +1,13 @@
+EngControl v1.1 — revisão pedagógica e de usabilidade
+
+Principais alterações:
+- Biblioteca PCM aprofundada: cada tema incorpora os conteúdos teóricos completos dos níveis relacionados.
+- Alternativas embaralhadas a cada início/reinício e também a cada apresentação de questão.
+- Distratores curtos recebem formulações contextualizadas para reduzir repetição e memorização por padrão.
+- Após responder, o aluno pode abrir “Analisar todas as alternativas” e ler por que cada opção é adequada ou inadequada.
+- Botão “Consultar resumo do nível” disponível durante toda questão, em modal, sem sair ou reiniciar a atividade.
+- Save portátil EGC4 inclui o avatar escolhido; saves EGC2/EGC3 continuam compatíveis como legados.
+- Relatórios preservam a ordem e o texto das alternativas efetivamente apresentadas.
+- Empacotamento limpo: o ZIP contém somente esta versão.
+
+Desenvolvido por DGandra - 2026
