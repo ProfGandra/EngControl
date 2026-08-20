@@ -1,4 +1,4 @@
-# EngControl v1.2
+# EngControl v1.3.1
 
 **O jogo de Planejamento e Controle da Manutenção**
 
