@@ -1,0 +1,8 @@
+EngControl v1.3.4 — Distribuição anti-curioso
+
+- Biblioteca ampliada: NR-1, 5, 7, 9, 10, 12, 13, 17, 18, 20, 33 e 35; EPI/CA; família ABNT NBR ISO 41000; NBR 16747, 5674, 15575, 14037, 16955, ISO 31000, NBR 14653 e ISO 22301.
+- Novos conteúdos desta atualização são somente de Biblioteca, sem novos exercícios.
+- Correção: prática NR-35 agora usa banco específico, sem questões de placas eletrônicas.
+- Runtime estático protegido, sem source maps.
+
+Desenvolvido por DGandra - 2026
