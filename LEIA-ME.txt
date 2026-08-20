@@ -1,0 +1,12 @@
+EngControl v1.3.3 — Distribuição “anti-curioso”
+
+CORREÇÃO CRÍTICA:
+- Runtime protegido agora é um JavaScript estático normal, sem eval(), Function() ou decodificação em tempo de execução.
+- Isso preserva os onclick da interface e evita o bug de menu sem resposta.
+- Código pedagógico e lógica continuam empacotados em um único arquivo com nome hash, sem source maps e sem pastas js/data públicas.
+- Atalhos comuns de inspeção e menu de contexto são bloqueados apenas como barreira casual.
+
+Limitação: nenhum jogo executado integralmente no navegador pode ter proteção absoluta do código.
+
+Runtime: ec-runtime.9e6be835550e.js
+Desenvolvido por DGandra - 2026
