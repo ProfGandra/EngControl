@@ -1,8 +1,0 @@
-EngControl v1.3 — Distribuição “anti-curioso”
-
-Esta compilação foi preparada para distribuição/teste com o código JavaScript e os bancos de conteúdo empacotados e ofuscados.
-Não inclui código-fonte legível nem mapas de origem.
-
-IMPORTANTE: aplicações executadas integralmente no navegador nunca podem ter o código protegido de forma absoluta. Esta compilação dificulta inspeção casual, busca por respostas e cópia direta. Para proteção forte, regras sensíveis precisam ser executadas em servidor.
-
-Desenvolvido por DGandra - 2026
