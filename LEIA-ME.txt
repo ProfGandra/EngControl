@@ -1,0 +1,13 @@
+EngControl v1.3.2 — Distribuição “anti-curioso”
+
+Esta compilação foi preparada para distribuição/teste com o código JavaScript e os bancos de conteúdo empacotados e ofuscados.
+Não inclui código-fonte legível nem mapas de origem.
+
+IMPORTANTE: aplicações executadas integralmente no navegador nunca podem ter o código protegido de forma absoluta. Esta compilação dificulta inspeção casual, busca por respostas e cópia direta. Para proteção forte, regras sensíveis precisam ser executadas em servidor.
+
+Desenvolvido por DGandra - 2026
+
+Correção 1.3.1: runtime protegido ajustado para publicar os manipuladores de interface no escopo global, restaurando a resposta dos botões/menu inicial.
+
+
+Correção v1.3.2: os manipuladores usados pelo HTML são exportados explicitamente para globalThis após a decodificação do runtime. Isso corrige botões e navegação em builds protegidas, inclusive em GitHub Pages.
