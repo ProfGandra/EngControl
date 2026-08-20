@@ -1,4 +1,4 @@
-EngControl v1.3 — Distribuição “anti-curioso”
+EngControl v1.3
 
 Esta compilação foi preparada para distribuição/teste com o código JavaScript e os bancos de conteúdo empacotados e ofuscados.
 Não inclui código-fonte legível nem mapas de origem.
