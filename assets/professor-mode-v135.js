@@ -21,7 +21,15 @@
     const s=document.createElement('style');s.id='ec137Styles';s.textContent=`
       .dashboard{align-items:start}
       .dashboard>.id-card.ec-badge{align-self:start;justify-self:stretch;height:auto!important;min-height:0!important;max-height:none!important}
-      .two-col>.id-card.ec-badge{align-self:center;height:auto!important;min-height:0!important;max-height:none!important}
+      .two-col>.id-card.ec-badge{align-self:center;justify-self:center;width:min(100%,360px);height:auto!important;min-height:0!important;max-height:none!important}
+      #profile .two-col{align-items:start}
+      #profile .id-card.ec-badge{width:min(100%,360px);padding:28px 18px 20px;margin-top:42px}
+      #profile .id-card.ec-badge .id-company{margin-bottom:10px}
+      #profile .id-card.ec-badge .id-role{font-size:11px;line-height:1.25;min-height:34px;display:flex;align-items:center;justify-content:center}
+      #profile .id-card.ec-badge .id-photo{width:110px;height:120px;object-fit:cover}
+      #profile .id-card.ec-badge .id-name{font-size:23px;margin:12px 0 4px}
+      #profile .id-card.ec-badge .barcode{height:54px}
+      #profile .id-card.ec-badge .ec-access-note{margin-top:10px}
       .id-card.ec-badge{position:relative;overflow:visible;background:linear-gradient(180deg,#f8fafc 0,#eef3f7 100%);color:#0b1f33;border:2px solid #c9d3dd;border-radius:18px;box-shadow:0 16px 34px rgba(0,0,0,.28);padding:28px 18px 20px;margin-top:34px;display:block!important}
       .id-card.ec-badge:before{content:'';position:absolute;left:50%;top:-38px;transform:translateX(-50%);width:68px;height:48px;border-radius:12px 12px 5px 5px;background:linear-gradient(#1f2937,#111827);border:2px solid #64748b;box-shadow:0 6px 12px rgba(0,0,0,.3)}
       .id-card.ec-badge:after{content:'';position:absolute;left:50%;top:-27px;transform:translateX(-50%);width:28px;height:12px;border-radius:999px;background:#020617;border:2px solid #94a3b8}
@@ -39,7 +47,7 @@
       .integrator-box label{display:block;margin:8px 0;line-height:1.35}
       .integrator-step{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}.integrator-step span{padding:7px 10px;border:1px solid var(--border);border-radius:999px;font-size:12px}.integrator-step span.on{border-color:#a855f7;background:rgba(168,85,247,.15)}
       .integrator-score{font-size:42px;font-weight:900;color:#7dd3fc;text-align:center}
-      @media(max-width:900px){.dashboard>.id-card.ec-badge{justify-self:center;width:min(100%,360px)}}
+      @media(max-width:900px){.dashboard>.id-card.ec-badge{justify-self:center;width:min(100%,360px)}#profile .two-col>.id-card.ec-badge{justify-self:center;width:min(100%,360px)}}
       @media(max-width:760px){.integrator-grid{grid-template-columns:1fr}.id-card.ec-badge{margin-top:42px}}
     `;document.head.appendChild(s);
   }
@@ -62,15 +70,9 @@
     target.parentElement.insertAdjacentElement('afterend',box);
   }
 
-  function unlockAll(x){
-    x.unlocked=Array.from({length:60},(_,i)=>i+1);x.availability=100;x.reliability=100;x.safety=100;ensureOperations(x);return x;
-  }
-  function configureDeveloper(x){
-    x.name='Gandra';x.avatar=SPECIAL_AVATAR;x.role='Desenvolvedor / Professor';x.teacherMode=true;x.developerMode=true;x.accessProfile='developer';x.id='ENG-TEST-DG';return unlockAll(x);
-  }
-  function configureProfessor(x){
-    x.role='Professor / Modo de Teste';x.teacherMode=true;x.developerMode=false;x.accessProfile='professor';return unlockAll(x);
-  }
+  function unlockAll(x){x.unlocked=Array.from({length:60},(_,i)=>i+1);x.availability=100;x.reliability=100;x.safety=100;ensureOperations(x);return x;}
+  function configureDeveloper(x){x.name='Gandra';x.avatar=SPECIAL_AVATAR;x.role='Desenvolvedor / Professor';x.teacherMode=true;x.developerMode=true;x.accessProfile='developer';x.id='ENG-TEST-DG';return unlockAll(x);}
+  function configureProfessor(x){x.role='Professor / Modo de Teste';x.teacherMode=true;x.developerMode=false;x.accessProfile='professor';return unlockAll(x);}
 
   const normalCreate=createPlayer;
   createPlayer=function(){
@@ -114,11 +116,7 @@
     phase12.appendChild(d);
   }
 
-  window.openIntegrator=function(){
-    if(!integratorAvailable())return alert('A Atividade Integradora é liberada após os 60 níveis.');
-    installIntegrator();state.integrator=state.integrator||{step:1,score:0,answers:{},started:new Date().toISOString()};renderIntegrator();show('integratorScreen');save();
-  };
-
+  window.openIntegrator=function(){if(!integratorAvailable())return alert('A Atividade Integradora é liberada após os 60 níveis.');installIntegrator();state.integrator=state.integrator||{step:1,score:0,answers:{},started:new Date().toISOString()};renderIntegrator();show('integratorScreen');save();};
   function stepBar(n){return `<div class='integrator-step'>${['Prioridade','Planejamento','RM/OC','Indicadores','Encerramento'].map((x,i)=>`<span class='${i+1===n?'on':''}'>${i+1}. ${x}</span>`).join('')}</div>`;}
   function checked(name){return [...document.querySelectorAll(`[name="${name}"]:checked`)].map(x=>x.value);}
   function radio(name){return document.querySelector(`[name="${name}"]:checked`)?.value||'';}
@@ -140,12 +138,7 @@
   window.intStep5=function(){const v=radio('intClose');if(!v)return alert('Selecione a decisão final.');state.integrator.answers.close=v;if(v==='close')state.integrator.score+=20;else{state.integrator.score+=4;state.budget=Math.max(0,state.budget-400);}state.integrator.step=6;state.integrator.completed=new Date().toISOString();state.integrator.documentId='INT-PCM-'+new Date().getFullYear()+'-'+String(Date.now()).slice(-6);state.documents=state.documents||{};state.documents.integrator={id:state.integrator.documentId,created:state.integrator.completed,score:state.integrator.score,answers:state.integrator.answers,validation:{status:'Aguardando validação do professor'}};save();renderIntegrator();};
 
   const baseShowHome=showHome;
-  showHome=function(){
-    if(state?.developerMode||state?.avatar===SPECIAL_AVATAR)configureDeveloper(state);else if(state?.teacherMode)configureProfessor(state);
-    baseShowHome();decorateBadges();addIntegratorCard();
-    const main=document.querySelector('#home main');const old=document.getElementById('professorModeBanner');if(old)old.remove();
-    if(state?.teacherMode&&main){const b=document.createElement('div');b.id='professorModeBanner';b.className='warning-line';b.style.marginBottom='14px';b.innerHTML=`<b>🔧 ${state.developerMode?'MODO DESENVOLVEDOR / PROFESSOR':'MODO PROFESSOR'}</b> — ${escHtml(state.name)} • 60 níveis e Atividade Integradora liberados para testes.`;main.insertBefore(b,main.firstChild);save();}
-  };
+  showHome=function(){if(state?.developerMode||state?.avatar===SPECIAL_AVATAR)configureDeveloper(state);else if(state?.teacherMode)configureProfessor(state);baseShowHome();decorateBadges();addIntegratorCard();const main=document.querySelector('#home main');const old=document.getElementById('professorModeBanner');if(old)old.remove();if(state?.teacherMode&&main){const b=document.createElement('div');b.id='professorModeBanner';b.className='warning-line';b.style.marginBottom='14px';b.innerHTML=`<b>🔧 ${state.developerMode?'MODO DESENVOLVEDOR / PROFESSOR':'MODO PROFESSOR'}</b> — ${escHtml(state.name)} • 60 níveis e Atividade Integradora liberados para testes.`;main.insertBefore(b,main.firstChild);save();}};
 
   installStyles();addField();installIntegrator();decorateBadges();
   document.title='EngControl — v'+VERSION;document.querySelectorAll('.landing-brand .beta').forEach(v=>v.textContent='v'+VERSION);
