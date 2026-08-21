@@ -1,7 +1,8 @@
-/* EngControl v1.3.5 — modo professor para testes */
+/* EngControl v1.3.6 — modo professor para testes */
 'use strict';
 (function(){
   const SPECIAL_AVATAR='PROF_GANDRA';
+  const ACCESS_CODE='!G@NDR@!';
   if(!AVATARS.some(a=>a[0]===SPECIAL_AVATAR)) AVATARS.push([SPECIAL_AVATAR,'Professor']);
 
   const baseAvatarSrc=avatarSrc;
@@ -12,7 +13,7 @@
     if(!target || document.getElementById('professorTestCode')) return;
     const box=document.createElement('div');
     box.className='field';
-    box.innerHTML='<label>Código de teste <span class="tiny">(opcional)</span></label><input id="professorTestCode" placeholder="Uso do professor/desenvolvedor"><p class="tiny">Deixe em branco para um cadastro normal.</p>';
+    box.innerHTML='<label>Código de teste <span class="tiny">(opcional)</span></label><input id="professorTestCode" type="password" autocomplete="off" placeholder="Uso do professor/desenvolvedor"><p class="tiny">Deixe em branco para um cadastro normal.</p>';
     target.parentElement.insertAdjacentElement('afterend',box);
   }
 
@@ -31,9 +32,9 @@
 
   const normalCreate=createPlayer;
   createPlayer=function(){
-    const code=(document.getElementById('professorTestCode')?.value||'').trim().toUpperCase();
+    const code=(document.getElementById('professorTestCode')?.value||'').trim();
     if(!code) return normalCreate();
-    if(code!=='GANDRA-TESTE') return alert('Código de teste não reconhecido.');
+    if(code!==ACCESS_CODE) return alert('Código de teste não reconhecido.');
     state=configureTeacher(fresh('Gandra',SPECIAL_AVATAR));
     state.id='ENG-TEST-DG';
     save();
