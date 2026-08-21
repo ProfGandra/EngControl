@@ -19,7 +19,10 @@
   function installStyles(){
     if(document.getElementById('ec137Styles'))return;
     const s=document.createElement('style');s.id='ec137Styles';s.textContent=`
-      .id-card.ec-badge{position:relative;overflow:visible;background:linear-gradient(180deg,#f8fafc 0,#eef3f7 100%);color:#0b1f33;border:2px solid #c9d3dd;border-radius:18px;box-shadow:0 16px 34px rgba(0,0,0,.28);padding:28px 18px 20px;margin-top:34px}
+      .dashboard{align-items:start}
+      .dashboard>.id-card.ec-badge{align-self:start;justify-self:stretch;height:auto!important;min-height:0!important;max-height:none!important}
+      .two-col>.id-card.ec-badge{align-self:center;height:auto!important;min-height:0!important;max-height:none!important}
+      .id-card.ec-badge{position:relative;overflow:visible;background:linear-gradient(180deg,#f8fafc 0,#eef3f7 100%);color:#0b1f33;border:2px solid #c9d3dd;border-radius:18px;box-shadow:0 16px 34px rgba(0,0,0,.28);padding:28px 18px 20px;margin-top:34px;display:block!important}
       .id-card.ec-badge:before{content:'';position:absolute;left:50%;top:-38px;transform:translateX(-50%);width:68px;height:48px;border-radius:12px 12px 5px 5px;background:linear-gradient(#1f2937,#111827);border:2px solid #64748b;box-shadow:0 6px 12px rgba(0,0,0,.3)}
       .id-card.ec-badge:after{content:'';position:absolute;left:50%;top:-27px;transform:translateX(-50%);width:28px;height:12px;border-radius:999px;background:#020617;border:2px solid #94a3b8}
       .id-card.ec-badge .id-company{background:#fff;border-radius:10px;padding:9px;border:1px solid #d6dee6;margin-bottom:10px}
@@ -36,6 +39,7 @@
       .integrator-box label{display:block;margin:8px 0;line-height:1.35}
       .integrator-step{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}.integrator-step span{padding:7px 10px;border:1px solid var(--border);border-radius:999px;font-size:12px}.integrator-step span.on{border-color:#a855f7;background:rgba(168,85,247,.15)}
       .integrator-score{font-size:42px;font-weight:900;color:#7dd3fc;text-align:center}
+      @media(max-width:900px){.dashboard>.id-card.ec-badge{justify-self:center;width:min(100%,360px)}}
       @media(max-width:760px){.integrator-grid{grid-template-columns:1fr}.id-card.ec-badge{margin-top:42px}}
     `;document.head.appendChild(s);
   }
